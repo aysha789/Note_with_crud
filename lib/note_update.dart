@@ -21,7 +21,9 @@ class _NodeAddState extends State<NodeUpdate> {
     titlecontroller.text=widget.title;
     Discriptioncontroller.text=widget.subtitle;
     return Scaffold(
+      backgroundColor: Color(0xffCBE4DE),
       appBar: AppBar(
+        backgroundColor: Color(0xff9EC8B9),
         title: Center(
           child: Text("Edit your note",style:TextStyle(
             color: Colors.black,
@@ -45,8 +47,8 @@ class _NodeAddState extends State<NodeUpdate> {
                       return null;
                     },
                     decoration: InputDecoration(
-                        fillColor: Colors.white70,
-                        filled: true,
+                        // fillColor: Colors.white70,
+                        // filled: true,
                         hintText: "title",
                         hintStyle: TextStyle(
                           fontSize: 25,
@@ -70,10 +72,9 @@ class _NodeAddState extends State<NodeUpdate> {
                       return null;
                     },
                     maxLines: 15,
-                    maxLength: 200,
                     decoration: InputDecoration(
-                        fillColor: Colors.white70,
-                        filled: true,
+                        // fillColor: Colors.white70,
+                        // filled: true,
                         hintText: "type something here",
                         hintStyle: TextStyle(
                             fontSize: 18

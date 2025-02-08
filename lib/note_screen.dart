@@ -8,10 +8,10 @@ import 'note_update.dart';
 
 
 List<Color> backgroundcolors = [
-  Color(0xffD9DFC6),
-  Color(0xffEFF3EA),
-  Color(0xffFFFDF0),
-  Color(0xffD0DDD0),
+ Color(0xffB3C8CF),
+ Color(0xffBED7DC),
+ Color(0xffF1EEDC),
+ Color(0xffE5DDC5),
 ];
 List<Map<String, dynamic>> notelist = [];
 
@@ -33,6 +33,7 @@ class _StartScreenState extends State<StartScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+          backgroundColor: Color(0xff9EC8B9),
           title: Row(
             children: [
               Flexible(
@@ -81,7 +82,7 @@ class _StartScreenState extends State<StartScreen> {
                                 i: index,)));
                         },
                         child: Card(
-                            color: Colors.white,
+                            color: getRandomColors(),
                             elevation: 5,
                             child: ListTile(
                               contentPadding: EdgeInsets.all(20),
@@ -118,66 +119,74 @@ class _StartScreenState extends State<StartScreen> {
                                     ),
                                   ),
                                   Text("${DateFormat.yMMMMEEEEd().format(notelist[index]['date'])}",style: TextStyle(
-                                      color: Colors.amber
+                                      color: Colors.white,
+                                    fontWeight: FontWeight.bold
                                   ),),
                                 ],
                               ),
-                              trailing: Column(
-                                children: [
-                                  IconButton(
-                                    onPressed: (){
-                                      showDialog(
-                                          barrierDismissible: false,
-                                          context: context, builder:(BuildContext context){
-                                        return AlertDialog(
-                                          backgroundColor: Colors.grey.shade900,
-                                          icon: Icon(Icons.info,color: Colors.grey,),
-                                          title: Text("Are you sure you want to delet?",
-                                            style: TextStyle(color: Colors.white),
-                                            maxLines: 1,),
-                                          content: Row(
-                                            mainAxisAlignment: MainAxisAlignment.spaceAround,
-                                            children: [
-                                              ElevatedButton(
-                                                  onPressed: (){
-                                                    setState(() {
-                                                      notelist.removeAt(index);
+                              trailing: Row(
+                                  mainAxisSize: MainAxisSize.min,
+                                  children: [
+                                    IconButton(
+                                        onPressed: (){
+                                        },
+                                        icon: Icon(Icons.favorite_border_outlined,
+                                            color:Colors.white)),
+                                    IconButton(
+                                      onPressed: (){
+                                        showDialog(
+                                            barrierDismissible: false,
+                                            context: context, builder:(BuildContext context){
+                                          return AlertDialog(
+                                            backgroundColor: Colors.grey.shade900,
+                                            icon: Icon(Icons.info,color: Colors.grey,),
+                                            title: Text("Are you sure you want to delet?",
+                                              style: TextStyle(color: Colors.white),
+                                              maxLines: 1,),
+                                            content: Row(
+                                              mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                              children: [
+                                                ElevatedButton(
+                                                    onPressed: (){
+                                                      setState(() {
+                                                        notelist.removeAt(index);
+                                                        Navigator.pop(context);
+                                                      });
+                                                    },
+                                                    style: ElevatedButton.styleFrom(
+                                                        backgroundColor: Colors.green
+                                                    ),
+                                                    child: Text("Yes",style: TextStyle(
+                                                        color: Colors.white
+                                                    ),)),
+                                                ElevatedButton(
+                                                    onPressed: (){
                                                       Navigator.pop(context);
-                                                    });
-                                                  },
-                                                  style: ElevatedButton.styleFrom(
-                                                      backgroundColor: Colors.green
-                                                  ),
-                                                  child: Text("Yes",style: TextStyle(
-                                                      color: Colors.white
-                                                  ),)),
-                                              ElevatedButton(
-                                                  onPressed: (){
-                                                    Navigator.pop(context);
-                                                  },
-                                                  style: ElevatedButton.styleFrom(
-                                                    backgroundColor: Colors.red,
-                                                  ),
-                                                  child: Text("No",style: TextStyle(
-                                                    color:Colors.white,
-                                                  ),)),
-                                            ],
-                                          ),
-                                        );
+                                                    },
+                                                    style: ElevatedButton.styleFrom(
+                                                      backgroundColor: Colors.red,
+                                                    ),
+                                                    child: Text("No",style: TextStyle(
+                                                      color:Colors.white,
+                                                    ),)),
+                                              ],
+                                            ),
+                                          );
 
-                                      });
-                                    },
-                                    icon: Icon(
-                                      Icons.delete,
-                                      color: Colors.amberAccent,
-                                      size: 40,
+                                        });
+                                      },
+                                      icon: Icon(
+                                        Icons.delete,
+                                        color: Colors.white,
+                                        size: 40,
+                                      ),
                                     ),
-                                  ),
-                                ],
+                                  ],
+                                ),
                               ),
                             )
-                        ),
-                      );
+                        );
+
 
                     }
                 ),
@@ -188,7 +197,7 @@ class _StartScreenState extends State<StartScreen> {
       floatingActionButton: Padding(
         padding: const EdgeInsets.all(20.0),
         child: FloatingActionButton(
-          backgroundColor: Colors.yellow,
+          backgroundColor: Color(0xff9EC8B9),
           onPressed: () {
             Navigator.push(
                 context, MaterialPageRoute(builder: (context) => NodeAdd()));
